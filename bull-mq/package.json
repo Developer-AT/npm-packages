@@ -1,0 +1,25 @@
+{
+  "name": "@appinventiv/bull-mq",
+  "version": "1.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abhishek Tyagi",
+  "license": "ISC",
+  "dependencies": {
+    "bullmq": "^5.78.0",
+    "ioredis": "^5.9.3"
+  },
+  "peerDependencies": {
+    "ioredis": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.2",
+    "ioredis": "^5.9.3",
+    "typescript": "^5.9.3"
+  }
+}
