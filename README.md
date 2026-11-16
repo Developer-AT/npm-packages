@@ -13,6 +13,7 @@ Internal monorepo of reusable **TypeScript** libraries for Node.js services. Eac
 | [`@appinventiv/aws-s3`](aws-s3/) | `aws-s3/` | AWS S3 upload, read, delete, and presigned URL utilities |
 | [`@appinventiv/aws-secret-manager`](aws-secret-manager/) | `aws-secret-manager/` | AWS Secrets Manager secret retrieval |
 | [`@appinventiv/smtp-mail`](smtp-mail/) | `smtp-mail/` | SMTP email sending via Nodemailer with flexible transport config |
+| [`@appinventiv/aws-ses`](aws-ses/) | `aws-ses/` | AWS SES raw HTML, stored templates, attachments, and batched bulk sends |
 
 Package-specific installation, API, and examples live in each folder’s **README.md**.
 
@@ -26,6 +27,7 @@ NPM Packages/
 ├── redis/
 ├── aws-s3/
 ├── aws-secret-manager/
+├── aws-ses/
 ├── smtp-mail/
 ├── .gitignore          # shared ignore rules (incl. all node_modules)
 └── README.md           # this file
@@ -71,7 +73,7 @@ This runs `tsc` and emits JavaScript + `.d.ts` files into `dist/`.
 From the repo root:
 
 ```bash
-for dir in logger rabbit-mq bull-mq redis aws-s3 aws-secret-manager smtp-mail; do
+for dir in logger rabbit-mq bull-mq redis aws-s3 aws-secret-manager aws-ses smtp-mail; do
   echo "Building $dir..."
   (cd "$dir" && npm install && npm run build)
 done
@@ -99,7 +101,7 @@ Only publish from packages you intend to release; each `package.json` is indepen
 
 Shared patterns across packages:
 
-- **Singleton exports** — e.g. `logger`, `rabbitMQ`, `bullMQ`, `redis`, `producer`, `consumer`, `job`, `worker`
+- **Singleton exports** — e.g. `logger`, `rabbitMQ`, `bullMQ`, `redis`, `ses`, `producer`, `consumer`, `job`, `worker`
 - **Configure once at startup** — connection/config on a manager or `init*` method before use
 - **TypeScript-first** — strict-ish `tsconfig`, declarations emitted to `dist/`
 - **Thin wrappers** — opinionated defaults around mature libraries (Winston, amqplib, BullMQ, ioredis, AWS SDK, Nodemailer)
